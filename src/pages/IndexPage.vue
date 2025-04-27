@@ -1,7 +1,7 @@
 <template>
   <q-page class="flex flex-center">
     <q-btn color="green" unelevated> luis </q-btn>
-    <div class="luis">luis</div>
+    <div class="luis">luis manzano</div>
   </q-page>
 </template>
 
