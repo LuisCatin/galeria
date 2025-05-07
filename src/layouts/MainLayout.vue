@@ -35,6 +35,12 @@ const linksList = [
     icon: 'terrain',
     link: '/paisajes',
   },
+  {
+    title: 'Aprendiendo',
+    caption: 'paisajes',
+    icon: 'co_present',
+    link: '/aprendiendo',
+  },
 ]
 
 const leftDrawerOpen = ref(false)
