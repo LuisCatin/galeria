@@ -18,7 +18,7 @@
       </q-list>
     </q-drawer>
 
-    <q-page-container>
+    <q-page-container class="page-container">
       <router-view />
     </q-page-container>
   </q-layout>
@@ -41,6 +41,18 @@ const linksList = [
     icon: 'co_present',
     link: '/aprendiendo',
   },
+  {
+    title: 'Practicando-Vue',
+    caption: 'practicando-vue',
+    icon: 'school',
+    link: '/practicando-vue',
+  },
+  {
+    title: 'ReyesPage',
+    caption: 'Reyes',
+    icon: 'school',
+    link: '/reyes',
+  },
 ]
 
 const leftDrawerOpen = ref(false)
@@ -49,3 +61,10 @@ function toggleLeftDrawer() {
   leftDrawerOpen.value = !leftDrawerOpen.value
 }
 </script>
+
+<style scoped>
+.page-container {
+  height: 100dvh;
+  width: 100%;
+}
+</style>
