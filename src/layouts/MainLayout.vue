@@ -50,15 +50,22 @@ const linksList = [
   {
     title: 'ReyesPage',
     caption: 'Reyes',
-    icon: 'school',
+    icon: 'fort',
     link: '/reyes',
   },
 
   {
     title: 'TeachVideo2',
     caption: 'teach',
-    icon: 'school',
+    icon: '123',
     link: '/teach',
+  },
+
+  {
+    title: 'Semaforo',
+    caption: 'colores',
+    icon: 'traffic',
+    link: '/semaforo',
   },
 ]
 
