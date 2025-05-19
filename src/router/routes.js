@@ -8,6 +8,7 @@ const routes = [
       { path: 'aprendiendo', component: () => import('pages/AprendePage.vue') },
       { path: 'practicando-vue', component: () => import('pages/PracticandoVue.vue') },
       { path: 'reyes', component: () => import('pages/ReyesPage.vue') },
+      { path: 'teach', component: () => import('pages/TeachVideo2.vue') },
     ],
   },
 

@@ -53,6 +53,13 @@ const linksList = [
     icon: 'school',
     link: '/reyes',
   },
+
+  {
+    title: 'TeachVideo2',
+    caption: 'teach',
+    icon: 'school',
+    link: '/teach',
+  },
 ]
 
 const leftDrawerOpen = ref(false)
