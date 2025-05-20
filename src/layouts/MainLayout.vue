@@ -67,6 +67,13 @@ const linksList = [
     icon: 'traffic',
     link: '/semaforo',
   },
+
+  {
+    title: '¿Cuántos clicks has dado?',
+    caption: 'Contador de clicks',
+    icon: 'ads_click',
+    link: '/contador',
+  },
 ]
 
 const leftDrawerOpen = ref(false)
