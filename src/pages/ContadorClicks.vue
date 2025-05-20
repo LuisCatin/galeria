@@ -1,28 +1,28 @@
 <script setup>
 import { ref, computed } from 'vue'
-const redClicks = ref(0)
-const yellowClicks = ref(0)
-const greenClicks = ref(0)
+const rojoClicks = ref(0)
+const azulClicks = ref(0)
+const verdeClicks = ref(0)
 const setColor = (c) => {
-  if (c === 'red') {
-    redClicks.value++
-  } else if (c === 'yellow') {
-    yellowClicks.value++
-  } else if (c === 'green') {
-    greenClicks.value++
+  if (c === 'rojo') {
+    rojoClicks.value++
+  } else if (c === 'azul') {
+    azulClicks.value++
+  } else if (c === 'verde') {
+    verdeClicks.value++
   }
 }
 const mostclicked = computed(() => {
-  const max = Math.max(redClicks.value, yellowClicks.value, greenClicks.value)
-  if (redClicks.value === yellowClicks.value && yellowClicks.value === greenClicks.value) {
+  const max = Math.max(rojoClicks.value, azulClicks.value, verdeClicks.value)
+  if (rojoClicks.value === azulClicks.value && azulClicks.value === verdeClicks.value) {
     return 'none'
   }
-  if (max === redClicks.value) {
-    return 'red'
-  } else if (max === yellowClicks.value) {
-    return 'yellow'
-  } else if (max === greenClicks.value) {
-    return 'green'
+  if (max === rojoClicks.value) {
+    return 'rojo'
+  } else if (max === azulClicks.value) {
+    return 'azul'
+  } else if (max === verdeClicks.value) {
+    return 'verde'
   }
   return 'none'
 })
@@ -34,19 +34,26 @@ const mostclicked = computed(() => {
       <div class="title">Colores</div>
       <div class="separator"></div>
       <div class="buttons">
-        <button class="button button-red" @click="setColor('red')">red</button>
-        <div class="box box-red">{{ redClicks }}</div>
-        <button @click="setColor('yellow')">yellow</button>
-        <div class="box box-yellow">{{ yellowClicks }}</div>
-        <button @click="setColor('green')">green</button>
-        <div class="box box-green">{{ greenClicks }}</div>
+        <button class="buttons buttons-rojo" @click="setColor('rojo')">ROJO</button>
+        <div class="box box-rojo">{{ rojoClicks }}</div>
+        <button class="buttons buttons-azul" @click="setColor('azul')">AZUL</button>
+        <div class="box box-azul">{{ azulClicks }}</div>
+        <button class="buttons buttons-verde" @click="setColor('verde')">VERDE</button>
+        <div class="box box-verde">{{ verdeClicks }}</div>
       </div>
     </div>
     <div class="container">
       <div class="title" v-if="mostclicked == 'none'">No hay un favorito</div>
       <div class="title" v-else>
         El color con más clicks es:
-        <span class="favorite" :class="[{ 'favorite-red': mostclicked == 'red' }]">
+        <span
+          class="favorite"
+          :class="[
+            { 'favorite-rojo': mostclicked == 'rojo' },
+            { 'favorite-azul': mostclicked == 'azul' },
+            { 'favorite-verde': mostclicked == 'verde' },
+          ]"
+        >
           {{ mostclicked }}
         </span>
       </div>
@@ -88,13 +95,6 @@ const mostclicked = computed(() => {
   border-top: 1px solid #d5d5d5;
 }
 
-.buttons {
-  display: grid;
-  grid-template-columns: 1fr 40px;
-  gap: 20px;
-  border-radius: 10px;
-}
-
 .box {
   display: flex;
   justify-content: center;
@@ -104,31 +104,57 @@ const mostclicked = computed(() => {
   color: #4b4b4b;
   background-color: #fff;
   border-radius: 10px;
-  &-red {
+  &-rojo {
     background-color: #ffc6c6;
     color: #ef4343;
     border: 1px solid #972929;
   }
-  &-yellow {
+  &-azul {
     background-color: #d2d2ff;
     color: #2b2b9c;
     border: 1px solid #2b2b9c;
   }
-  &-green {
+  &-verde {
     background-color: #ccffcc;
     color: #0d8c0d;
     border: 1px solid #0d8c0d;
   }
 }
 
-.red {
-  border-radius: 1px;
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 40px;
+  font-size: 24px;
+  font-weight: 600;
+  gap: 20px;
+  border-radius: 10px;
+  &-rojo {
+    background-color: #ef4343;
+    color: #ffffff;
+    border: 1px solid #972929;
+  }
+  &-azul {
+    background-color: #4646ee;
+    color: #ffffff;
+    border: 1px solid #2b2b9c;
+  }
+  &-verde {
+    background-color: #0fc70f;
+    color: #ffffff;
+    border: 1px solid #0d8c0d;
+  }
 }
 
 .favorite {
   text-transform: uppercase;
-  &-red {
+  &-rojo {
     color: #ef4343;
+  }
+  &-azul {
+    color: #4646ee;
+  }
+  &-verde {
+    color: #0d8c0d;
   }
 }
 </style>
