@@ -26,6 +26,26 @@ const totalIngresos = computed(() => {
   })
   return ingresos
 })
+
+const totalEgresos = computed(() => {
+  let egresos = 0
+  movimientos.value.forEach(({ monto }) => {
+    if (monto < 0) {
+      egresos += monto
+    }
+  })
+  return egresos
+})
+
+const totalSuma = computed(() => {
+  let suma = 0
+  movimientos.value.forEach(({ monto }) => {
+    if (monto > 0) {
+      suma += monto
+    }
+  })
+  return suma
+})
 </script>
 
 <template>
@@ -76,11 +96,15 @@ const totalIngresos = computed(() => {
         <div class="libro-movimientos__resumen">
           <div class="libro-movimientos__resumen-item">
             Total de Ingresos:
-            <div class="libro-movimientos__resumen-value green">$2000.00</div>
+            <div class="libro-movimientos__resumen-value green">
+              ${{ Math.abs(totalSuma).toFixed(2) }}
+            </div>
           </div>
           <div class="libro-movimientos__resumen-item">
             Total de Egresos:
-            <div class="libro-movimientos__resumen-value red">$2000.00</div>
+            <div class="libro-movimientos__resumen-value red">
+              ${{ Math.abs(totalEgresos).toFixed(2) }}
+            </div>
           </div>
           <div class="libro-movimientos__resumen-item">
             Saldo Actual:
