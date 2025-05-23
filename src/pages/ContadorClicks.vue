@@ -12,6 +12,7 @@ const setColor = (c) => {
     verdeClicks.value++
   }
 }
+
 const mostclicked = computed(() => {
   const max = Math.max(rojoClicks.value, azulClicks.value, verdeClicks.value)
   if (rojoClicks.value === azulClicks.value && azulClicks.value === verdeClicks.value) {
@@ -34,11 +35,11 @@ const mostclicked = computed(() => {
       <div class="title">Colores</div>
       <div class="separator"></div>
       <div class="buttons">
-        <button class="buttons buttons-rojo" @click="setColor('rojo')">ROJO</button>
+        <button class="button button-rojo" @click="setColor('rojo')">ROJO</button>
         <div class="box box-rojo">{{ rojoClicks }}</div>
-        <button class="buttons buttons-azul" @click="setColor('azul')">AZUL</button>
+        <button class="button button-azul" @click="setColor('azul')">AZUL</button>
         <div class="box box-azul">{{ azulClicks }}</div>
-        <button class="buttons buttons-verde" @click="setColor('verde')">VERDE</button>
+        <button class="button button-verde" @click="setColor('verde')">VERDE</button>
         <div class="box box-verde">{{ verdeClicks }}</div>
       </div>
     </div>
@@ -126,8 +127,18 @@ const mostclicked = computed(() => {
   grid-template-columns: 1fr 40px;
   font-size: 24px;
   font-weight: 600;
-  gap: 20px;
+  gap: 20px 10px;
   border-radius: 10px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 0 40px;
   &-rojo {
     background-color: #ef4343;
     color: #ffffff;

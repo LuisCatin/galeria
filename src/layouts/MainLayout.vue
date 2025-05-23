@@ -74,6 +74,13 @@ const linksList = [
     icon: 'ads_click',
     link: '/contador',
   },
+
+  {
+    title: 'Mis Movimientos Bancarios',
+    caption: 'Ingresos y Egresos',
+    icon: 'monetization_on',
+    link: '/movimiento',
+  },
 ]
 
 const leftDrawerOpen = ref(false)

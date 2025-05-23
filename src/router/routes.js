@@ -11,6 +11,7 @@ const routes = [
       { path: 'teach', component: () => import('pages/TeachVideo2.vue') },
       { path: 'semaforo', component: () => import('src/pages/SemaforoPractice.vue') },
       { path: 'contador', component: () => import('src/pages/ContadorClicks.vue') },
+      { path: 'movimiento', component: () => import('src/pages/MovimientoBancario.vue') },
     ],
   },
 
