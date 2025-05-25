@@ -280,10 +280,6 @@ const totalSuma = computed(() => {
   font-weight: 600;
 }
 
-.libro-movimientos__td--descripcion,
-.libro-movimientos__th--descripcion {
-}
-
 .libro-movimientos__td--monto,
 .libro-movimientos__th--monto {
   text-align: right;

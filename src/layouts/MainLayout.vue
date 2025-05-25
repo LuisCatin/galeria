@@ -79,6 +79,13 @@ const linksList = [
     icon: 'monetization_on',
     link: '/movimiento',
   },
+
+  {
+    title: 'Convertidor de temparatura',
+    caption: 'Convertidor',
+    icon: 'monetization_on',
+    link: '/convertidor',
+  },
 ]
 
 const leftDrawerOpen = ref(false)
