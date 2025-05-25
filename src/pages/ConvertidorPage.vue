@@ -3,10 +3,10 @@ import { ref } from 'vue'
 const tempC = ref('')
 const tempF = ref('')
 const changeC = () => {
-  tempF.value = (tempC.value * 9) / 5 + 32
+  tempF.value = ((tempC.value * 9) / 5 + 32).toFixed(2)
 }
 const changeF = () => {
-  tempC.value = ((tempF.value - 32) * 5) / 9
+  tempC.value = (((tempF.value - 32) * 5) / 9).toFixed(2)
 }
 </script>
 
@@ -18,8 +18,10 @@ const changeF = () => {
       <div class="convertidor__inputs">
         <div class="convertidor__unidad">°C</div>
         <input @input="changeC" class="convertidor__input" type="number" v-model="tempC" />
+
         <div class="convertidor__igual">=</div>
         <input @input="changeF" class="convertidor__input" type="number" v-model="tempF" />
+
         <div class="convertidor__unidad">°F</div>
       </div>
     </div>

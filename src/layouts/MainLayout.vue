@@ -82,8 +82,8 @@ const linksList = [
 
   {
     title: 'Convertidor de temparatura',
-    caption: 'Convertidor',
-    icon: 'monetization_on',
+    caption: 'Celsius y Fahrenheit',
+    icon: 'thermostat',
     link: '/convertidor',
   },
 ]
