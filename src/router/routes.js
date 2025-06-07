@@ -13,6 +13,7 @@ const routes = [
       { path: 'contador', component: () => import('src/pages/ContadorClicks.vue') },
       { path: 'movimiento', component: () => import('src/pages/MovimientoBancario.vue') },
       { path: 'convertidor', component: () => import('src/pages/ConvertidorPage.vue') },
+      { path: 'ejercicios', component: () => import('src/pages/EjerciciosJs.vue') },
     ],
   },
 

@@ -86,6 +86,13 @@ const linksList = [
     icon: 'thermostat',
     link: '/convertidor',
   },
+
+  {
+    title: 'EjerciciosJs',
+    caption: 'JS',
+    icon: 'thermostat',
+    link: '/ejercicios',
+  },
 ]
 
 const leftDrawerOpen = ref(false)
