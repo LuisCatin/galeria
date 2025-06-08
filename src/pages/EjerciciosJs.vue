@@ -7,11 +7,6 @@ const ejercicio1Resultado = ref(0)
 const ejercicio1Calcular = () => {
   let sumatoria = 0
 
-  let text = new String(ejercicio1Input.value)
-  for (let i = 0; i < text.length; i++) {
-    console.log(text.charAt(i) == 'a')
-  }
-
   for (let i = 1; i <= ejercicio1Input.value; i++) {
     sumatoria = sumatoria + i
   }
@@ -65,13 +60,127 @@ const ejercicio4Calcular = () => {
 }
 
 // Invertir un texto
-const ejercicio5Input = ref(0)
-const ejercicio5Resultado = ref(0)
+const ejercicio5Input = ref('')
+const ejercicio5Resultado = ref('')
 const ejercicio5Calcular = () => {
-  let text = new String(ejercicio5Input.value)
-  for (let i = 0; i < text.length; i++) {
-    console.log(text.charAt(i) == 'a')
+  ejercicio5Resultado.value = ejercicio5Input.value.split('').reverse().join('')
+
+  const t = ejercicio5Input.value
+  let tinvertido = ''
+  for (let i = t.length - 1; i >= 0; i--) {
+    tinvertido = tinvertido + t[i]
   }
+  ejercicio5Resultado.value = tinvertido
+}
+
+// Año bisiesto
+const ejercicio6Input = ref('')
+const ejercicio6Resultado = ref('')
+const ejercicio6Calcular = () => {
+  if (ejercicio6Input.value % 4 == 0) {
+    ejercicio6Resultado.value = 'Si'
+  } else {
+    ejercicio6Resultado.value = 'No'
+  }
+
+  // ejercicio6Resultado.value = ejercicio6Input.value % 4 == 0 ? 'si' : 'no'
+}
+
+// Suma de Pares
+const ejercicio7Input = ref('')
+const ejercicio7Resultado = ref('')
+const ejercicio7Calcular = () => {
+  // let sumatoria = 0
+
+  // for (let i = 1; i <= ejercicio7Input.value; i++) {
+  //   if (i % 2 == 0) {
+  //     sumatoria = sumatoria + i
+  //   }
+  // }
+
+  // ejercicio7Resultado.value = sumatoria
+
+  let sumatoria = 0
+
+  for (let i = 0; i <= ejercicio7Input.value; i += 2) {
+    sumatoria += i
+  }
+
+  ejercicio7Resultado.value = sumatoria
+}
+
+// Suma de Pares
+const ejercicio8Input = ref('')
+const ejercicio8Resultado = ref('')
+const ejercicio8Calcular = () => {
+  const texto = ejercicio8Input.value
+  ejercicio8Resultado.value = texto.toUpperCase()
+  // // import { ref, computed } from 'vue'
+
+  // const ejercicio8Input = ref('')
+
+  // const ejercicio8Resultado = computed(() => ejercicio8Input.value.toUpperCase())
+}
+
+// Es numero primo? Si / No
+const ejercicio9Input = ref('')
+const ejercicio9Resultado = ref('')
+const ejercicio9Calcular = () => {
+  const num = Number(ejercicio9Input.value)
+  let esPrimo = num > 1 // Solo números mayores que 1 pueden ser primos
+
+  for (let i = 2; i < num; i++) {
+    if (num % i === 0) {
+      esPrimo = false
+      break
+    }
+  }
+
+  ejercicio9Resultado.value = esPrimo ? 'Si es primo' : 'No es primo'
+}
+
+// Determinar el caractér más repetido
+const ejercicio10Input = ref('')
+const ejercicio10Resultado = ref('')
+const ejercicio10Calcular = () => {
+  // let caracteres = Array(10000000)
+  // caracteres.fill(0)
+
+  // for (let char of ejercicio10Input.value) {
+  //   caracteres[char.charCodeAt()]++
+  // }
+
+  // let positon = 0
+  // let cantidadIguales = false
+  // for (let i = 0; i < caracteres.length; i++) {
+  //   if (caracteres[i] > 0)
+  //     if (caracteres[positon] == caracteres[i]) {
+  //       cantidadIguales = true
+  //     } else if (caracteres[positon] < caracteres[i]) {
+  //       positon = i
+  //       cantidadIguales = false
+  //     }
+  // }
+
+  // ejercicio10Resultado.value = cantidadIguales ? 'Ninguno' : String.fromCharCode(positon)
+
+  let repeticiones = 0
+  let charMasRepeticiones = ''
+  let empate = false
+
+  for (let char of ejercicio10Input.value) {
+    const division = ejercicio10Input.value.split(char)
+
+    if (repeticiones == division.length - 1 && char != charMasRepeticiones) {
+      empate = true
+    } else if (repeticiones < division.length - 1) {
+      repeticiones = division.length - 1
+      charMasRepeticiones = char
+      empate = false
+    }
+  }
+
+  ejercicio10Resultado.value = empate ? 'Ninguno' : charMasRepeticiones
 }
 </script>
 
@@ -156,16 +265,16 @@ const ejercicio5Calcular = () => {
     <div class="ejercicio">
       <h1>año bisiesto</h1>
 
-      <form class="content" @submit.prevent="">
+      <form class="content" @submit.prevent="ejercicio6Calcular">
         <!--
         2000 => bisiesto
         2001 => no bisiesto
         -->
-        <input type="text" placeholder="9" />
+        <input type="text" placeholder="Escribe un año" v-model="ejercicio6Input" />
 
         <button type="submit">Calcular</button>
 
-        Resultado: {{}}
+        Resultado: {{ ejercicio6Resultado }}
       </form>
     </div>
 
@@ -173,15 +282,15 @@ const ejercicio5Calcular = () => {
     <div class="ejercicio">
       <h1>SUmatoria de numeros pares de 1 - N</h1>
 
-      <form class="content" @submit.prevent="">
+      <form class="content" @submit.prevent="ejercicio7Calcular">
         <!--
         10 => 30
         -->
-        <input type="text" placeholder="9" />
+        <input type="text" placeholder="9" v-model="ejercicio7Input" />
 
         <button type="submit">Calcular</button>
 
-        Resultado: {{}}
+        Resultado: {{ ejercicio7Resultado }}
       </form>
     </div>
 
@@ -189,15 +298,15 @@ const ejercicio5Calcular = () => {
     <div class="ejercicio">
       <h1>convertir una texto a mayuscula</h1>
 
-      <form class="content" @submit.prevent="">
+      <form class="content" @submit.prevent="ejercicio8Calcular">
         <!--
        luis => LUIS
         -->
-        <input type="text" placeholder="9" />
+        <input type="text" placeholder="Escriba un texto" v-model="ejercicio8Input" />
 
         <button type="submit">Calcular</button>
 
-        Resultado: {{}}
+        Resultado: {{ ejercicio8Resultado }}
       </form>
     </div>
 
@@ -205,16 +314,16 @@ const ejercicio5Calcular = () => {
     <div class="ejercicio">
       <h1>determinar si N es primo</h1>
 
-      <form class="content" @submit.prevent="">
+      <form class="content" @submit.prevent="ejercicio9Calcular">
         <!--
         7 => Si
         4 => No
         -->
-        <input type="text" placeholder="9" />
+        <input type="text" placeholder="Escriba un numero" v-model="ejercicio9Input" />
 
         <button type="submit">Calcular</button>
 
-        Resultado: {{}}
+        Resultado: {{ ejercicio9Resultado }}
       </form>
     </div>
 
@@ -222,16 +331,16 @@ const ejercicio5Calcular = () => {
     <div class="ejercicio">
       <h1>determinar el caracter q mas se repite en el textoo</h1>
 
-      <form class="content" @submit.prevent="">
+      <form class="content" @submit.prevent="ejercicio10Calcular">
         <!--
         banana => a
         luis => Ninguno
         -->
-        <input type="text" placeholder="9" />
+        <input type="text" placeholder="9" v-model="ejercicio10Input" />
 
         <button type="submit">Calcular</button>
 
-        Resultado: {{}}
+        Resultado: {{ ejercicio10Resultado }}
       </form>
     </div>
 
