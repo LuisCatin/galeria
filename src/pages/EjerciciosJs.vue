@@ -182,6 +182,33 @@ const ejercicio10Calcular = () => {
 
   ejercicio10Resultado.value = empate ? 'Ninguno' : charMasRepeticiones
 }
+
+// Sumar los numeros de un texto
+const ejercicio11Input = ref('')
+const ejercicio11Resultado = ref('')
+const ejercicio11Calcular = () => {
+  let suma = 0
+  const texto = ejercicio11Input.value
+  for (let i = 0; i < texto.length; i++) {
+    const numero = texto[i]
+    if (numero >= '0' && numero <= '9') {
+      suma += Number(numero)
+    }
+  }
+
+  ejercicio11Resultado.value = suma
+}
+
+// crear abreviaturas de palabras con tamaños mayores a 10
+// internacionalizacion = i18n
+const ejercicio12Input = ref('')
+const ejercicio12Resultado = ref('')
+const ejercicio12Calcular = () => {
+  const texto = ejercicio12Input.value
+  if (texto.length > 10) {
+    ejercicio12Resultado.value = texto[0] + (texto.length - 2) + texto[texto.length - 1]
+  } else ejercicio12Resultado.value = texto
+}
 </script>
 
 <template>
@@ -348,17 +375,35 @@ const ejercicio10Calcular = () => {
     <div class="ejercicio">
       <h1>sumar los numeros de un texto</h1>
 
-      <form class="content" @submit.prevent="">
+      <form class="content" @submit.prevent="ejercicio11Calcular">
         <!--
         banana12 => 3
         luis => 0
         ksjdg3n92 = 14
         -->
-        <input type="text" placeholder="9" />
+        <input type="text" placeholder="9" v-model="ejercicio11Input" />
 
         <button type="submit">Calcular</button>
 
-        Resultado: {{}}
+        Resultado: {{ ejercicio11Resultado }}
+      </form>
+    </div>
+
+    <!-- crear abreviaturas de palabras con tamaños mayores a 10 -->
+    <div class="ejercicio">
+      <h1>crear abreviaturas de palabras con tamaños mayores a 10</h1>
+
+      <form class="content" @submit.prevent="ejercicio12Calcular">
+        <!--
+        karel => karel
+        luis => luis
+        internacionalizacion = i18n
+        -->
+        <input type="text" placeholder="" v-model="ejercicio12Input" />
+
+        <button type="submit">Calcular</button>
+
+        Resultado: {{ ejercicio12Resultado }}
       </form>
     </div>
   </div>
